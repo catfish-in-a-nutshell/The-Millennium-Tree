@@ -360,6 +360,19 @@ addLayer("mo", {
             unlocked: () => player.mo.points.gte(10000)
         }
     },
+
+    clickables: {
+        11: {
+            display() {
+                return `If you are playing this on mobile, hold this to do month prestige`
+            },
+            unlocked: () => player.y.points.gte(2),
+            onHold: () => {
+                doReset("mo")
+            },
+            canClick: () => true
+        }
+    },
     layerShown(){return true},
     months2GlobalBoost: () => {
         if (hasUpgrade("y", 12)) {
